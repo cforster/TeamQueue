@@ -1,0 +1,30 @@
+<template name="join">
+
+    <form class="main form page col-sm-offset-1 col-xs-offset-2">
+
+
+            <div data-toggle="buttons" role="group" >
+               <div class="btn-group">
+                {{#each team}}
+                    <label class="btn btn-default team {{#if isselected}}active{{/if}}" name="{{_id}}">
+                        <input type="radio" {{isselected}}>{{name}} ({{number}})
+                    </label>
+                {{/each}}
+                </div>
+                <br/><br/>
+                <div class="btn-group">
+                {{#each volunteer}}
+                    <label class="btn btn-default team {{#if isselected}}active{{/if}}" name="{{_id}}">
+                        <input type="radio" {{isselected}}>{{name}}
+                    </label>
+                {{/each}}
+                </div>
+            </div>
+
+    </form>
+    <br/>
+
+    {{#if myteam}}
+        {{> addContact}}
+    {{/if}}
+</template>

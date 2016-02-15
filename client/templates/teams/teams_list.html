@@ -4,4 +4,7 @@
             {{> teamItem}}
         {{/each}}
     </ul>
+    {{#if currentUser}}
+        {{> addTeam }}
+    {{/if}}
 </template>

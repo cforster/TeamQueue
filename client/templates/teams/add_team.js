@@ -7,7 +7,8 @@ Template.addTeam.events({
 
         var team = {
             number: $(e.target).find('[name=number]').val(),
-            name: $(e.target).find('[name=name]').val()
+            name: $(e.target).find('[name=name]').val(),
+            type: $(e.target).find('option:selected').val()
         };
 
         Meteor.call('teamInsert', team, function(error, result) {

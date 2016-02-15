@@ -3,7 +3,7 @@
  */
 Template.teamsDisplay.helpers({
     team: function() {
-        return Teams.find({}, {
+        return Teams.find({type: "team"}, {
             sort: {number: 1}
         });
     },

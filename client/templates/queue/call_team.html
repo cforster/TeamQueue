@@ -31,7 +31,10 @@
             {{#with event}}
                 <div class="form-group">
                     <label class="control-label" for="destination">message</label>
-                    <div class="controls">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="checkbox" checked="true" id="checkedSms" >
+                        </span>
                         <input name="message" id="message" type="text"
                                value="Please go to {{destination}} to queue for {{event}}"
                                placeholder="where to" class="form-control" />

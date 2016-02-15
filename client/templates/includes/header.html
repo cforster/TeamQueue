@@ -11,23 +11,44 @@
         </div>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
-                <li><a href="{{pathFor 'teamsList'}}">List Teams</a></li>
-            </ul>
 
-            {{#if currentUser}}
-            <ul class="nav navbar-nav">
-                 <li><a href="{{pathFor 'addTeam'}}">Add Team</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="{{pathFor 'callTeam'}}">Call Team</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                 <li><a href="{{pathFor 'updateStatus'}}">Update Team</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="{{pathFor 'announce'}}">Announcement</a></li>
-            </ul>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        Display <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="{{pathFor 'teamsDisplay'}}">All Teams Status</a></li>
+                        <li><a href="">All Teams Progress</a></li>
+                        {{#if myteam}}<li><a href="/display/{{myteam}}">My Team</a></li>{{/if}}
+
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        Registration <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="{{pathFor 'teamsList'}}">List Teams</a></li>
+                        <li><a href="{{pathFor 'join'}}">Join</a></li>
+                    </ul>
+                </li>
+                {{#if currentUser}}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            Queue <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="{{pathFor 'callTeam'}}">Call Team</a></li>
+                            <li><a href="{{pathFor 'updateStatus'}}">Update Team</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{pathFor 'announce'}}">Announcement</a></li>
             {{/if}}
+            </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 {{> loginButtons}}

@@ -1,17 +1,18 @@
 <template name="addTeam">
-    <form class="main form page">
+    <form class="form-inline">
+
         <div class="form-group">
-            <label class="control-label" for="number">number</label>
-            <div class="controls">
-                <input name="number" id="number" type="text" value="" placeholder="Team Number" class="form-control" />
-            </div>
+            <input name="number" id="number" type="text" value="" placeholder="Team Number" class="form-control" />
         </div>
         <div class="form-group">
-            <label class="control-label" for="name">name</label>
-            <div class="controls">
-                <input name="name" id="name" type="text" value="" placeholder="Team Name" class="form-control"/>
-            </div>
+            <input name="name" id="name" type="text" value="" placeholder="Team Name" class="form-control"/>
         </div>
-        <input type="submit" value="Submit" class="btn btn-primary"/>
+        <div class="form-group">
+            <select class="form-control" name="type">
+                <option selected="selected">team</option>
+                <option>volunteer</option>
+            </select>
+        </div>
+        <input type="submit" value="add" class="btn btn-primary"/>
     </form>
 </template>

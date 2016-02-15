@@ -24,10 +24,18 @@ Template.addContact.events({
     'submit form': function(e, template) {
         e.preventDefault();
 
+        console.log(template);
+
+        if(template.data!=null) {
+            var teamId = template.data._id;
+        } else {
+            var teamId = Session.get('myteam');
+        }
+
         var contact = {
             name:  $(e.target).find('[name=name]').val(),
             cell:  $(e.target).find('[name=cell]').val(),
-            teamId: template.data._id
+            teamId: teamId
         };
 
 
@@ -35,7 +43,9 @@ Template.addContact.events({
 
         Meteor.call('contactInsert', contact, function(error, contactId) {
             if(error) throwError(error.reason);
-            else Router.go('teamsDisplay');
+            else {
+                if(template.data==null) Router.go('teamsDisplay');
+            }
         });
     }
 });

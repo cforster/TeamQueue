@@ -3,7 +3,7 @@
  */
 Template.callTeam.helpers({
     team: function() {
-        return Teams.find({status: {$exists: false}}); //include a filter for teams that have NOT been called
+        return Teams.find({type:'team', status: {$exists: false}}); //include a filter for teams that have NOT been called
     },
     teamselected: function() {
         return Session.get('team');
@@ -23,24 +23,26 @@ Template.callTeam.events({
         var teamid = Session.get('team');
 
         // Send messages
-        var message = $(e.target).find('[name=message]').val()
+        var message = $(e.target).find('[name=message]').val();
 
-        Contacts.find({teamId: teamid}).forEach(function(data) {
-            var smsOptions = {
-                to: data.cell,
-                message: message
-            };
+        if($('input#checkedSms').is(':checked')) {
+            Contacts.find({teamId: teamid}).forEach(function(data) {
+                var smsOptions = {
+                    to: data.cell,
+                    message: message
+                };
 
-            Meteor.call('sendSMS', smsOptions, function (err, result) {
-                if (err) {
-                    alert("There was an error sending the message. See the console for more info");
-                    console.warn("There was an error sending the message.", smsOptions, err);
-                    return;
-                }
-                //alert("Message sent successfully. See the console for more info.");
-                //console.log("Message sent. Result: ", result);
+                Meteor.call('sendSMS', smsOptions, function (err, result) {
+                    if (err) {
+                        alert("There was an error sending the message. See the console for more info");
+                        console.warn("There was an error sending the message.", smsOptions, err);
+                        return;
+                    }
+                    //alert("Message sent successfully. See the console for more info.");
+                    //console.log("Message sent. Result: ", result);
+                });
             });
-        });
+        }
 
 
         //update status:

@@ -1,0 +1,17 @@
+<template name="teamPage">
+    <div class="team-page page">
+        {{> teamItem}}
+
+        <ul class="contacts">
+            {{#each contacts}}
+                {{>contactItem}}
+            {{/each}}
+        </ul>
+
+        {{#if currentUser}}
+            {{> addContact}}
+        {{/if}}
+
+
+    </div>
+</template>

@@ -1,0 +1,45 @@
+<template name="callTeam">
+    <form class="main form page">
+        <div class="btn-group" data-toggle="buttons" role="group" >
+            {{#each team}}
+                <label class="btn btn-default team">
+                    <input type="radio" id="{{_id}}">{{name}} ({{number}})
+                </label>
+            {{/each}}
+        </div>
+
+        <p></p>
+        {{#if teamselected}}
+
+        <div class="btn-group" data-toggle="buttons" role="group">
+            <label class="btn btn-default event">
+                <input type="radio" id="Technical Judging">Technical Judging
+            </label>
+            <label class="btn btn-default event">
+                <input type="radio" id="Core Values Judging">Core Values Judging
+            </label>
+            <label class="btn btn-default event">
+                <input type="radio" id="Project Judging">Project Judging
+            </label>
+            <label class="btn btn-default event">
+                <input type="radio" id="Performance">Performance
+            </label>
+        </div>
+
+        <p></p>
+
+            {{#with event}}
+                <div class="form-group">
+                    <label class="control-label" for="destination">message</label>
+                    <div class="controls">
+                        <input name="message" id="message" type="text"
+                               value="Please go to {{destination}} to queue for {{event}}"
+                               placeholder="where to" class="form-control" />
+                    </div>
+                </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+            {{/with}}
+        {{/if}}
+    </form>
+</template>

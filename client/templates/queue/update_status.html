@@ -1,0 +1,42 @@
+<template name="updateStatus">
+
+    <form class="main form page">
+        <div class="row">
+
+            <div class="btn-group col-sm-3" data-toggle="buttons" role="group" >
+                {{#each team}}
+                 <label class="btn btn-default btn-block team {{status}}" name="{{_id}}">
+                    <input type="radio">{{name}} ({{number}})
+                 </label>
+                {{/each}}
+            </div>
+
+        {{#with teamsel}}
+        <div class="jumbotron col-sm-6">
+            <ul class="list-group h3">
+                <li class="list-group-item">
+                    Team {{name}} <span class="badge badge-large">{{number}}</span>
+                </li>
+                <li class="list-group-item">
+                    Status <span class="badge badge-large">{{status}}</span>
+                </li>
+                <li class="list-group-item">
+                    Time elapsed <span class="badge badge-large">{{timelapse}}</span>
+                </li>
+
+                <li class="list-group-item">
+
+                        <button {{queuedStatus}} type="button" class="status btn btn-lg btn-block Queued">Queued</button>
+                        <button {{activeStatus}} type="button" class="status btn btn-lg  btn-block Active">Active</button>
+                        <button {{completeStatus}} type="button" class="status btn btn-lg btn-default btn-block">Complete</button>
+                        &nbsp;
+                </li>
+            </ul>
+        </div>
+
+        {{/with}}
+
+        </div>
+
+    </form>
+</template>

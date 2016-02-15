@@ -1,0 +1,33 @@
+<template name="announce">
+    <form>
+        <div class="form-group">
+            <label for="message">Message </label>
+            <input type="text" class="form-control" id="message" name="message" placeholder="your announcement">
+        </div>
+        <!--<button type="submit" class="btn btn-default">send</button>-->
+        <!-- modal caller -->
+        <button type="submit" class="modal-toggle btn btn-primary" data-toggle="modal" data-modal-type="confirm">
+            Send Annoucement</button>
+
+    </form>
+
+    <div id="modal-dialog" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+                    <h3>Confirm Announcement</h3>
+                </div>
+                <div class="modal-body">
+                    <pre>{{announcement}}</pre>
+                    <p>Send this announcement to ALL subscribed?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" id="btnYes" class="btn btn-danger confirm">Yes</a>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

@@ -1,0 +1,18 @@
+.delete {
+    color: #d9534f;
+}
+.Called {
+    background-color: #fcf8e3;
+}
+.Queued {
+    background-color: #d9edf7;
+}
+.Active {
+    background-color: #dff0d8;
+}
+td#bootstrap-overrides {
+    vertical-align: middle;
+}
+.badge-large {
+    font-size: 20px;
+}

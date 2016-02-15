@@ -1,0 +1,9 @@
+<template name="teamItem">
+     <li class="list-group-item">{{name}} <small>({{number}})</small> <span class="badge">{{contactsCount}} contacts</span>
+         <a href="{{pathFor 'teamPage'}}" class="btn btn-xs btn-default">view</a>
+         <a href="{{pathFor 'joinTeam'}}" class="btn btn-xs btn-default">join</a>
+         {{#if currentUser}}
+             <a href="#" class="delete btn-xs"><span class="glyphicon glyphicon-remove" ></span></a>
+         {{/if}}
+    </li>
+</template>

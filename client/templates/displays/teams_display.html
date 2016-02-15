@@ -1,0 +1,19 @@
+<template name="teamsDisplay">
+    <table class="table table-hover">
+        <thead class="h2">
+            <tr>
+                <td colspan="2">
+                    <a href="{{pathFor 'teamsList'}}" style="color: black;">TeamQueue</a>
+                    <span class="small glyphicon glyphicon-info-sign"></span></td>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each team}}
+            <tr class="{{status}}">
+                <th class="h4">{{name}} <small>({{number}})</small></th>
+                <td id="bootstrap-overrides">{{message}} {{#if status}}<small>{{time}}</small>{{/if}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</template>

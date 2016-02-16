@@ -57,5 +57,6 @@ Template.announce.onRendered(function() {
         Session.set('announcement', false);
 
         $('#modal-dialog').modal('hide');
+        $('input#message').val('');
     });
 });

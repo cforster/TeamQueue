@@ -1,0 +1,16 @@
+<template name="promote">
+    {{#if currentUser}}
+        <form>
+            {{name}} ({{number}})
+
+            {{nextStatus}}
+
+            {{#if status}}
+                <button type="submit" class="btn btn-primary btn-lg" name="{{status}}">yes</button>
+                <div class="btn"><a href="{{pathFor 'teamsList'}}">no</a></div>
+            {{/if}}
+        </form>
+    {{else}}
+        Hello {{name}}!
+    {{/if}}
+</template>

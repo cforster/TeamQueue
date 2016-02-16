@@ -4,7 +4,11 @@
             <tr>
                 <td colspan="2">
                     <a href="{{pathFor 'teamsList'}}" style="color: black;">TeamQueue</a>
-                    <span class="small glyphicon glyphicon-info-sign"></span></td>
+                    <span class="small glyphicon glyphicon-info-sign"></span>
+                    {{#with announcement}}
+                        <div class="alert alert-danger h3" role="alert">{{text}} <small>{{time}}</small></div>
+                    {{/with}}
+                </td>
             </tr>
         </thead>
         <tbody>

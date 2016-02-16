@@ -1,4 +1,13 @@
 <template name="announce">
+
+    {{#with liveannouncement}}
+        <div class="alert alert-warning">
+            <pre>{{text}}</pre>
+            <button class="btn btn-primary rel">release announcement</button>
+        </div>
+    {{/with}}
+
+
     <form>
         <div class="form-group">
             <label for="message">Message </label>

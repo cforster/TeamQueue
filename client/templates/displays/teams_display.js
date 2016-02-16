@@ -2,6 +2,9 @@
  * Created by charlie on 2/13/16.
  */
 Template.teamsDisplay.helpers({
+    announcement: function() {
+        return Announcements.findOne({current:true});
+    },
     team: function() {
         return Teams.find({type: "team"}, {
             sort: {number: 1}

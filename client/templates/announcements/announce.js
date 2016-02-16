@@ -4,6 +4,9 @@
 Template.announce.helpers({
     announcement: function() {
         return Session.get('announcement');
+    },
+    liveannouncement: function() {
+        return Announcements.findOne({current:true});
     }
 });
 
@@ -14,6 +17,11 @@ Template.announce.events({
     'submit form': function(e) {
         e.preventDefault();
         $('#modal-dialog').modal('show');
+    },
+    'click .rel': function(e) {
+        e.preventDefault();
+
+        Meteor.call('clearAnnouncement');
     }
 });
 
@@ -22,6 +30,9 @@ Template.announce.onRendered(function() {
 
         // handle form processing here
         var a = Session.get('announcement');
+
+        //release old announcement
+        Meteor.call('clearAnnouncement');
 
         Contacts.find().forEach(function(data) {
             var smsOptions = {
@@ -40,10 +51,11 @@ Template.announce.onRendered(function() {
             });
         });
 
+
+        var temp = Meteor.call('announceInsert', {text: a});
+
         Session.set('announcement', false);
 
         $('#modal-dialog').modal('hide');
-
-        Router.go('teamsDisplay');
     });
 });

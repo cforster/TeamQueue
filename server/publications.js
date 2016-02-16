@@ -7,3 +7,6 @@ Meteor.publish('teams', function() {
 Meteor.publish('contacts', function(){
     return Contacts.find();
 });
+Meteor.publish('announcements', function(){
+    return Announcements.find();
+});

@@ -40,7 +40,9 @@ Template.updateStatus.events({
 
         var teamid = Session.get('teamselected');
         if(e.target.firstChild.data=='Complete') {
-            Teams.update(teamid, {$unset: {status: ''}});
+            //COMPLETE HERE
+            var event = Teams.findOne({_id: teamid}).event;
+            Meteor.call('completeTask', {team: teamid, event: event});
             Session.set('teamselected', false);
         }
         else Teams.update(teamid,{$set: {

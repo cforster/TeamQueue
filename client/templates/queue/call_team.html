@@ -12,36 +12,32 @@
         {{#if teamselected}}
 
         <div class="btn-group" data-toggle="buttons" role="group">
+           {{#each event}}
             <label class="btn btn-default event">
-                <input type="radio" id="Technical Judging">Technical Judging
+                <input type="radio" id="{{name}}">{{name}}
+                {{#if location}}in <span class="small" id="{{location}}">{{location}}</span> {{/if}}
             </label>
-            <label class="btn btn-default event">
-                <input type="radio" id="Core Values Judging">Core Values Judging
-            </label>
-            <label class="btn btn-default event">
-                <input type="radio" id="Project Judging">Project Judging
-            </label>
-            <label class="btn btn-default event">
-                <input type="radio" id="Performance">Performance
-            </label>
+           {{/each}}
         </div>
 
         <p></p>
-
             {{#with event}}
-                <div class="form-group">
+                {{#if locationselected}}
+                    <div class="form-group">
                     <label class="control-label" for="destination">message</label>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <input type="checkbox" checked="true" id="checkedSms" >
                         </span>
                         <input name="message" id="message" type="text"
-                               value="Please go to {{destination}} to queue for {{event}}"
+                               value="Please go to {{locationselected}} to queue for {{eventselected}}"
                                placeholder="where to" class="form-control" />
                     </div>
-                </div>
-
-            <input type="submit" value="Submit" class="btn btn-primary"/>
+                    </div>
+                    <input type="submit" value="Queue" class="btn btn-primary"/>
+                {{else}}
+                    <input type="submit" value="Task Completed" class="btn btn-primary"/>
+                {{/if}}
             {{/with}}
         {{/if}}
     </form>

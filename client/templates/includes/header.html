@@ -19,7 +19,7 @@
 
                     <ul class="dropdown-menu">
                         <li><a href="{{pathFor 'teamsDisplay'}}">All Teams Status</a></li>
-                        <li><a href="">All Teams Progress</a></li>
+                        <li><a href="{{pathFor 'displayProgress'}}">All Teams Progress</a></li>
                         {{#if myteam}}<li><a href="/display/{{myteam}}">My Team</a></li>{{/if}}
 
                     </ul>
@@ -33,6 +33,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{pathFor 'teamsList'}}">List Teams</a></li>
                         <li><a href="{{pathFor 'join'}}">Join</a></li>
+                        {{#if currentUser}}<li><a href="{{pathFor 'listEvents'}}">Events</a></li>{{/if}}
                     </ul>
                 </li>
                 {{#if currentUser}}

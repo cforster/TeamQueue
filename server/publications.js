@@ -10,3 +10,6 @@ Meteor.publish('contacts', function(){
 Meteor.publish('announcements', function(){
     return Announcements.find();
 });
+Meteor.publish('events', function(){
+    return Events.find();
+});

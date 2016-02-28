@@ -1,0 +1,13 @@
+<template name="addEvent" xmlns="http://www.w3.org/1999/html">
+    <form class="form form-horizontal">
+        <div class="form-group">
+            <label class="control-label" for="event">event</label>
+            <input type="text" class="form-control" id="event" name="event" placeholder="Event name"/>
+            <input type="checkbox" name="queue" id="queue"> requires queuing
+            <input type="text" class="form-control" id="location" name="location"
+                   placeholder="event location" style="display:none;"/>
+            <button type="submit" class="btn btn-primary">Add Event</button>
+        </div>
+
+    </form>
+</template>

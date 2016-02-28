@@ -12,19 +12,27 @@
                     <input type="tel" class="form-control" id="cell" name="cell" data-onblur data-required data-phone />
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="smswarning">
                 <div class="col-sm-1 col-xs-2 control-label"><span class="glyphicon text-warning glyphicon-alert badge-large"></span></div>
                 <div class="col-sm-9 col-xs-10"><div class="alert alert-warning" role="alert">
                     You will receive sms messages throughout the day
                 </div>
                     </div>
             </div>
+        <div class="row" id="smssuccess">
+            <div class="col-sm-1 col-xs-2 control-label"><span class="glyphicon text-success glyphicon-alert badge-large"></span></div>
+            <div class="col-sm-9 col-xs-10"><div class="alert alert-success" role="alert">
+                You have successfully joined.  You should receive an SMS confirmation.
+            </div>
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-sm-1 col-xs-offset-2 col-sm-9 col-xs-10">
                 <button type="submit" class="btn btn-lg btn-primary">Join</button>
             </div>
         </div>
+
 
     </form>
 </template>

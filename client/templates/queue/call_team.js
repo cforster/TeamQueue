@@ -1,6 +1,13 @@
 /**
  * Created by charlie on 2/12/16.
  */
+
+/*
+TODO: make sms not visible for events that don't need queueing
+TODO: use location on this page to create sms
+TODO: iterate over the events rather than hard code.
+ */
+
 Template.callTeam.helpers({
     team: function() {
         return Teams.find({type:'team', status: {$exists: false}}); //include a filter for teams that have NOT been called
@@ -9,11 +16,13 @@ Template.callTeam.helpers({
         return Session.get('team');
     },
     event: function() {
+        return Events.find();
+    },
+    eventselected: function() {
         return Session.get('event');
     },
-    destination: function() {
-        var event = Session.get('event');
-        return event.toString().includes('Judging')?'6th floor':'1st floor theater';
+    locationselected: function() {
+        return Session.get('location');
     }
 });
 Template.callTeam.events({
@@ -45,21 +54,35 @@ Template.callTeam.events({
         }
 
 
-        //update status:
-        Teams.update(teamid,{$set: {
-            status: 'Called',
-            event: Session.get('event'),
-            timestamp: (new Date()).getTime(),
-            message: message
-        }});
+        if(Session.get('location')) {
+            //update status:
+            Teams.update(teamid, {
+                $set: {
+                    status: 'Called',
+                    event: Session.get('event'),
+                    timestamp: (new Date()).getTime(),
+                    message: message
+                }
+            });
+        } else {
+            //COMPLETE HERE
+            Meteor.call('completeTask', {team: Session.get('team'), event: Session.get('event')});
+        }
 
         Session.set('event', false);
         Session.set('team', false);
+        Session.set('location', false);
     },
     'click .event': function(e) {
         e.preventDefault();
 
-        Session.set('event', $(e.target).find('input').attr('id'));
+        var target = e.target;
+        if (target.nodeName=='SPAN') target = target.parentNode;
+
+        Session.set('event', $(target).find('input').attr('id'));
+        var loc = $(target).find('span').attr('id');
+        if(loc) Session.set('location', loc);
+        else Session.set('location', false);
     },
     'click .team': function(e) {
         e.preventDefault();

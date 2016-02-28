@@ -12,7 +12,6 @@ Template.join.helpers({
         return Session.get('myteam');
     },
     isselected: function() {
-        console.log(this._id);
         return (this._id==Session.get('myteam'))?'selected':'';
     }
 });

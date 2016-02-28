@@ -1,0 +1,34 @@
+<template name="displayProgress">
+    <table class="table table-hover">
+        <thead class="h2">
+        <tr>
+            <td colspan="2">
+                <a href="{{pathFor 'teamsList'}}" style="color: black;">TeamQueue</a>
+                <span class="small glyphicon glyphicon-info-sign"></span>
+            </td>
+        </tr>
+        <tr>
+            <th class="h4">Team <small>(#)</small></th>
+            {{#each e in event}}
+                <td class="h6" id="bootstrap-overrides">
+                    {{e.name}}
+                </td>
+            {{/each}}
+        </tr>
+        </thead>
+        <tbody>
+        {{#each t in team}}
+            <tr>
+                <th class="h4">{{t.name}} <small>({{t.number}})</small></th>
+                {{#each e in event}}
+                    <td id="bootstrap-overrides">
+                        {{#if completed e.name t._id}}<span class="glyphicon glyphicon-check"></span>
+                        {{/if}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+
+</template>

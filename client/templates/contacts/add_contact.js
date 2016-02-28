@@ -13,6 +13,8 @@ Template.addContact.onRendered(function(){
             }
         }
     });
+    $('#smssuccess').hide();
+    $('#smswarning').show();
 });
 $.validator.addMethod( "phoneUS", function( phone_number, element ) {
     phone_number = phone_number.replace( /\s+/g, "" );
@@ -21,6 +23,10 @@ $.validator.addMethod( "phoneUS", function( phone_number, element ) {
 }, "Please specify a valid phone number" );
 
 Template.addContact.events({
+    'focus .form-control': function() {
+        $('#smssuccess').hide();
+        $('#smswarning').show()
+    },
     'submit form': function(e, template) {
         e.preventDefault();
 
@@ -38,13 +44,31 @@ Template.addContact.events({
             teamId: teamId
         };
 
-
-
-
         Meteor.call('contactInsert', contact, function(error, contactId) {
-            if(error) throwError(error.reason);
+            if(error) {
+                if(error.error=="cell-exists") alert(error.message);
+                else throwError(error.reason);
+            }
             else {
-                if(template.data==null) Router.go('teamsDisplay');
+                //send a success message:
+                var team = Teams.findOne(teamId);
+                Meteor.call('sendSMS', {
+                    to:contact.cell,
+                    message:"You have successfully registered to receive SMS notifications for " + team.name
+                },
+                function (err, result) {
+                    if (err) {
+                        console.warn("There was an error sending the message.", smsOptions, err);
+                    }
+                });
+
+
+                if(template.data==null) Router.go('teamsDisplay'); //if on mobile, reroute
+                else { //otherwise, reset:
+                    $("form").trigger('reset');
+                    $("#smssuccess").show();
+                    $('#smswarning').hide();
+                }
             }
         });
     }

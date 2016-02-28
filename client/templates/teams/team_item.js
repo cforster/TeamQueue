@@ -14,6 +14,7 @@ Template.teamItem.events({
         if(confirm("Delete this team?")) {
             var currentTeamId = this._id;
             Teams.remove(currentTeamId);
+            Contacts.remove({teamId: currentTeamId}); //TODO: not sure if this works....
             Router.go('teamsList');
         }
     }

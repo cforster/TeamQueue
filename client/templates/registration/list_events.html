@@ -1,0 +1,12 @@
+<template name="listEvents">
+    <ul>
+    {{#each event}}
+       <li>
+           <span class="h4">{{name}}</span>
+           {{#if location}}<span class="h4 small">in {{location}}</span>{{/if}}
+           <a href="#" class="delete btn-xs"><span class="glyphicon glyphicon-remove" ></span></a>
+       </li>
+    {{/each}}
+    </ul>
+    {{> addEvent}}
+</template>

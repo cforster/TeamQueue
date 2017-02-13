@@ -6,7 +6,7 @@ Template.addTeam.events({
         e.preventDefault();
 
         var team = {
-            number: $(e.target).find('[name=number]').val(),
+            number: parseInt($(e.target).find('[name=number]').val()),
             name: $(e.target).find('[name=name]').val(),
             type: $(e.target).find('option:selected').val()
         };

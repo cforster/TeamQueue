@@ -4,6 +4,8 @@
 
 Template.teamsList.helpers({
     teams: function() {
-        return Teams.find();
+        return Teams.find({}, {
+            sort: {number: 1}
+        });
     }
 });

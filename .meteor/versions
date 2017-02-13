@@ -15,6 +15,7 @@ caching-compiler@1.1.9
 caching-html-compiler@1.1.0
 callback-hook@1.0.10
 check@1.2.4
+crosswalk@1.7.0
 ctjp:meteor-bootstrap-switch@3.3.1_5
 ctjp:meteor-bootstrap-switch-assets@3.3.1_1
 ddp@1.2.5

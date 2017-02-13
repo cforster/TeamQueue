@@ -11,7 +11,7 @@ TODO: iterate over the events rather than hard code.
 
 Template.callTeam.helpers({
     team: function() {
-        return Teams.find({type:'team', status: {$exists: false}}); //include a filter for teams that have NOT been called
+        return Teams.find({type:'team', status: {$exists: false}}, {sort: {number: 1}}); //include a filter for teams that have NOT been called
     },
     teamselected: function() {
         return Session.get('team');

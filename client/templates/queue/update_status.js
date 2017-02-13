@@ -4,7 +4,7 @@
 
 Template.updateStatus.helpers({
     team: function() {
-        return Teams.find({status: {$in: ["Called", "Queued", "Active", "Complete"]}}); //include a filter for teams that have been called
+        return Teams.find({status: {$in: ["Called", "Queued", "Active", "Complete"]}}, {sort: {number: 1}}); //include a filter for teams that have been called
     },
     timelapse: function() {
         //return moment(this.timestamp).fromNow(); //(new Date()).getTime()-this.timestamp;
